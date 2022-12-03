@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Anything outside of the RECOGNIZER element can be left untouched -->
+<CMD CMDVersion="1.1" xmlns="http://www.clarin.eu/cmd/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1430905751617/xsd">
+    <!-- See http://catalog.clarin.eu/ds/ComponentRegistry?registrySpace=published&itemId=clarin.eu:cr1:p_1430905751617 -->
+    <Header></Header>
+    <Resources>
+        <ResourceProxyList></ResourceProxyList>
+        <JournalFileProxyList></JournalFileProxyList>
+        <ResourceRelationList></ResourceRelationList>
+    </Resources>
+    <Components>
+        <RECOGNIZER>
+            <!--
+            For Recognizer API extensions the regonizerType is "direct", for stand-alone components running on the same
+            computer the type should be "local". That are currently the types supported by ELAN.
+            For "direct" the "run" attributes (runMac etc.) should have the value of the fully qualified name of the 
+            class implementing "Recognizer.java". For "local" the executable command per platform should be the value.
+            The "info" element contains the name as it will be shown in the user interface. Try to define a name
+            that makes it likely to be unique, e.g by including an institution or university acronym.
+            -->
+            <recognizer recognizerType="local" runLinux="./sileroVAD-elan.sh" runMac="./sileroVAD-elan.sh" runWin="C:\Users\loren\ELAN_6.4\app\extensions\silero-vad-elan-main\sileroVAD-elan.bat"
+                info="Silero voice activity detection">Silero_Voice_Activity_Detection</recognizer>
+
+            <!-- For a more detailed documentation, a HTML file linked to the recognizer. This HTML ships with the 
+                 recognizer and gives extra explanations for using the recognizer and information about licenses, 
+                 authors and contacting them, version numbers etc. The link can be either a relative link to a file
+                 in the same directory tree as the CMDI file or (not recommended) a direct http link to a recognizer 
+                 homepage elsewhere. 
+            -->
+            <documentation>sileroVAD-elan.html</documentation>
+
+            <!--
+            Any number of input and output parameters can be specified.
+            At least one input element (of type audio, video or timeseries) should be specified.
+            Other input and output types (tier, timeseries etc.) and their required formats are described 
+            in the interfacing specification at https://tla.mpi.nl/projects_info/auvis/#more-7066 and 
+            https://tla.mpi.nl/projects_info/avatech/
+            (https://tla.mpi.nl/wp-content/uploads/2012/08/Avatech-interface-spec-2014-03-06.pdf)
+            -->
+            <input level="basic" type="audio" optional="false"
+                mimetypes="audio/x-wav"
+                info="Input audio file (WAV)">source</input>
+
+            <numparam level="basic" type="float" min="0.01" max="0.99" default="0.95"
+                info="Speech vs. non-speech threshold (smaller value = more non-speech)">speech_threshold</numparam>
+
+            <numparam level="basic" type="int" min="-1000" max="1000" default="-25"
+                info="Adjustment to start of segments (ms)">adjust_start_ms</numparam>
+
+            <numparam level="basic" type="int" min="-1000" max="1000" default="25"
+                info="Adjustment to end of segments (ms)">adjust_end_ms</numparam>
+
+            <textparam level="basic" convoc="Enable Disable" default="Enable"
+                info="Perform additional silence detection?">do_silence_detection</textparam>
+
+            <numparam level="basic" type="int" min="0" max="100" default="65"
+                info="Silence threshold at segment edges (higher value = quieter segments treated as non-silence)">edge_threshold</numparam>
+
+            <numparam level="basic" type="int" min="0" max="100" default="80"
+                info="Silence threshold inside segments (higher value = quieter sections treated as non-silence)">internal_threshold</numparam>
+
+            <output level="basic" type="tier" optional="true"
+                mimetypes="text/xml" default="/var/tmp/voxseg.xml" 
+                info="Output recognized segments">output_segments</output>
+        </RECOGNIZER>
+    </Components>
+</CMD>
