@@ -37,7 +37,7 @@ pip install silero
 pip install -q torchaudio
 ```
   
-Once all of these tools and packages have been installed, Voxseg-ELAN can
+Once all of these tools and packages have been installed, SileroVAD-Elan can
 be made available to ELAN as follows:
 
 1. Edit the file `SileroVAD-elan.sh` to specify a Unicode-friendly language and
