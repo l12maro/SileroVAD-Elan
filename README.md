@@ -30,7 +30,7 @@ git clone https://github.com/l12maro/SileroVAD-Elan
 cd SileroVAD-Elan
 
 python3 -m virtualenv venv-silerovad
-./venv-silerovad/Scripts/activate
+source ./venv-silerovad/Scripts/activate
 
 git clone https://github.com/snakers4/silero-vad.git
 pip install silero
