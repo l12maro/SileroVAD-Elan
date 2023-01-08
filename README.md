@@ -26,8 +26,8 @@ Python packages, all of which should be installed in a virtual environment:
 Under Windows 10, the following commands can be used to fetch and install the
 necessary Python packages:
 ```
-git clone <add later>
-cd sileroVAD-Elan
+git clone https://github.com/l12maro/SileroVAD-Elan
+cd SileroVAD-Elan
 
 python3 -m virtualenv venv-silerovad
 ./venv-silerovad/Scripts/activate
