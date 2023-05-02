@@ -20,7 +20,7 @@
             The "info" element contains the name as it will be shown in the user interface. Try to define a name
             that makes it likely to be unique, e.g by including an institution or university acronym.
             -->
-            <recognizer recognizerType="local" runLinux="./sileroVAD-elan.sh" runMac="./sileroVAD-elan.sh" runWin="C:\Users\Lorena\Desktop\No_copia\RA\ELAN_6.4\app\extensions\SileroVAD-Elan\dist\sileroVAD-elan.exe"
+            <recognizer recognizerType="local" runLinux="./sileroVAD-elan.sh" runMac="./sileroVAD-elan.sh" runWin=".\sileroVAD-elan.bat"
                 info="Silero voice activity detection">Silero_Voice_Activity_Detection</recognizer>
 
             <!-- For a more detailed documentation, a HTML file linked to the recognizer. This HTML ships with the 
