@@ -56,16 +56,18 @@ speech_timestamps = get_speech_timestamps(wav, model, sampling_rate=SAMPLING_RAT
 pprint(speech_timestamps)
 
 # Read in the amount of time users want to add/subtract from the start and
-# end times of each of the segments produced by this recognizer.  (A quick-
-# and-dirty way of working around results that may clip the starts or ends
-# of annotations, but are otherwise fine)
+# end times of each of the segments produced by this recognizer.
 adjust_start_s = float(params['adjust_start_ms']) / 1000.0
 adjust_end_s = float(params['adjust_end_ms']) / 1000.0
 
 
 # Then open 'output_segments' for writing, and return all of the new speech
+<<<<<<< HEAD
 # segments recognized by SileroVAD as the contents of <span> elements (see
 # below).
+=======
+# segments recognized by Silero as the contents of <span> elements.
+>>>>>>> bc11bebe3d2d5d09cfae2d86fa0a43619192d296
 with open(params['output_segments'], 'w', encoding = 'utf-8') as output_segs:
     # Write document header.
     output_segs.write('<?xml version="1.0" encoding="UTF-8"?>\n')
