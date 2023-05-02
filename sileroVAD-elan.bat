@@ -20,5 +20,9 @@ SET LC_ALL="en_US.UTF-8"
 SET PYTHONIOENCODING="utf-8"
 SET PATH="%PATH%:%FFMPEG_DIR%"
 
+
+:: execute the app
+".\venv\Scripts\python.exe" "sileroVAD-elan.py" runserver
+
 :: Activate the virtual environment, then execute the main script.
-".\venv-silerovad\Scripts\python" ".\sileroVAD-elan.py" runserver
+::".\venv\Scripts\python" "sileroVAD-elan.py" runserver
